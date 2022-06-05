@@ -7,7 +7,12 @@ Open the git bash within the repository and make sure to install LFS to handle b
 1. Download LFS from: https://git-lfs.github.com/
 2. Install it by typing into your git bash
     "git lfs install"
-  
+
+If you want to work on the Unity Project than use Unity version 2022.1.3f1 since version conflicts could cause major headaches. 
+To open the project just go to the unity hub and under open: "Add project from disk". Than select the project folder and the project starts.
+![image](https://user-images.githubusercontent.com/75223967/172059868-2e9d9f23-70e3-4676-9b7e-fbbb434e8e92.png)
+
+    
 Install SourceTree for a better git-experience and to handle merges
   1. Download and install SourceTree: https://www.sourcetreeapp.com/
   2. Don't create an account at "Bitbucket" ( we don't need that)
