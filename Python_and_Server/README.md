@@ -1,0 +1,1 @@
+Here go any python and server scripts. Also any necessary .gitignore for those scripts files go here
