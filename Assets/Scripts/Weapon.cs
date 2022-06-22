@@ -6,7 +6,7 @@ public class Weapon : Collidable
 {
     // Damage struct
     public int damagePoint = 1;
-    public int usesLeft = 1;
+    private int usesLeft = 10;
     public float pushForce = 2.0f;
 
     public bool ranged = false;
@@ -39,13 +39,18 @@ public class Weapon : Collidable
         if (broken)
             return;
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.F))
         {
             if(Time.time - lastSwing > cooldown)
             {
                 lastSwing = Time.time;
                 Swing();
             }
+        }
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            // TODO: Enter request mode
         }
     }
 
@@ -78,10 +83,14 @@ public class Weapon : Collidable
 
     private void Swing()
     {
+        Debug.Log("Uses Left: " + usesLeft);
         anim.SetTrigger("Swing");
-        usesLeft--;
+        usesLeft = usesLeft - 1;
+
         if (usesLeft <= 0)
+        {
             Break();
+        }
     }
 
 

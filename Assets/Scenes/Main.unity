@@ -2371,7 +2371,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileSpriteIndex: 8
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -2381,7 +2381,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 3
-      m_TileSpriteIndex: 3
+      m_TileSpriteIndex: 7
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -2432,20 +2432,20 @@ Tilemap:
     m_Data: {fileID: -1865063454, guid: a3aba5edb03beba4bba2f6ac3066383b, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 1682240814, guid: a3aba5edb03beba4bba2f6ac3066383b, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 966428693, guid: a3aba5edb03beba4bba2f6ac3066383b, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -1127760412, guid: a3aba5edb03beba4bba2f6ac3066383b, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 4
     m_Data: {fileID: -1019449909, guid: a3aba5edb03beba4bba2f6ac3066383b, type: 3}
   - m_RefCount: 4
     m_Data: {fileID: 1982742390, guid: a3aba5edb03beba4bba2f6ac3066383b, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -1127760412, guid: a3aba5edb03beba4bba2f6ac3066383b, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 966428693, guid: a3aba5edb03beba4bba2f6ac3066383b, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 17
     m_Data:
@@ -2503,6 +2503,10 @@ PrefabInstance:
     - target: {fileID: 3028358758652794242, guid: 518c6bd5c9f34cd438928f21718e1011, type: 3}
       propertyPath: m_Name
       value: Chest_0 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3028358758652794242, guid: 518c6bd5c9f34cd438928f21718e1011, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3028358758652794243, guid: 518c6bd5c9f34cd438928f21718e1011, type: 3}
       propertyPath: m_SortingLayer
@@ -2825,6 +2829,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chest_0 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 3028358758652794242, guid: 518c6bd5c9f34cd438928f21718e1011, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3028358758652794243, guid: 518c6bd5c9f34cd438928f21718e1011, type: 3}
       propertyPath: m_SortingLayer
       value: 3
@@ -2895,6 +2903,10 @@ PrefabInstance:
     - target: {fileID: 3028358758652794242, guid: 518c6bd5c9f34cd438928f21718e1011, type: 3}
       propertyPath: m_Name
       value: Chest_0 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3028358758652794242, guid: 518c6bd5c9f34cd438928f21718e1011, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3028358758652794243, guid: 518c6bd5c9f34cd438928f21718e1011, type: 3}
       propertyPath: m_SortingLayer
@@ -3014,6 +3026,10 @@ PrefabInstance:
     - target: {fileID: 3028358758652794242, guid: 518c6bd5c9f34cd438928f21718e1011, type: 3}
       propertyPath: m_Name
       value: Chest_0 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3028358758652794242, guid: 518c6bd5c9f34cd438928f21718e1011, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3028358758652794243, guid: 518c6bd5c9f34cd438928f21718e1011, type: 3}
       propertyPath: m_SortingLayer
@@ -23017,7 +23033,6 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   damagePoint: 1
-  uses: 10
   pushForce: 5
   ranged: 0
 --- !u!95 &1649324611
@@ -23149,6 +23164,10 @@ PrefabInstance:
     - target: {fileID: 3028358758652794242, guid: 518c6bd5c9f34cd438928f21718e1011, type: 3}
       propertyPath: m_Name
       value: Chest_0 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3028358758652794242, guid: 518c6bd5c9f34cd438928f21718e1011, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3028358758652794243, guid: 518c6bd5c9f34cd438928f21718e1011, type: 3}
       propertyPath: m_SortingLayer
@@ -25008,6 +25027,10 @@ PrefabInstance:
     - target: {fileID: 3028358758652794242, guid: 518c6bd5c9f34cd438928f21718e1011, type: 3}
       propertyPath: m_Name
       value: Chest_0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3028358758652794242, guid: 518c6bd5c9f34cd438928f21718e1011, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3028358758652794243, guid: 518c6bd5c9f34cd438928f21718e1011, type: 3}
       propertyPath: m_SortingLayer
