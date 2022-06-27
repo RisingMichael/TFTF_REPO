@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyHitbox : Collidable
 {
     // Damage
-    public int damage = 5;
+    public int damage = 1;
     public float pushForce = 5;
 
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    public static Action<int> OnCoinsChanged;
 
     // Ressources
     public List<Sprite> playerSprites;
@@ -19,8 +21,15 @@ public class GameManager : MonoBehaviour
     public Player player;
     public FloatingTextManager floatingTextManager;
 
+
+    public TextInputManager textInputManager { get => GetComponent<TextInputManager>(); }
+    public DisplayUiManager displayUiManager { get => GetComponent<DisplayUiManager>(); }
+    public InputUiManager inputUiManager { get => GetComponent<InputUiManager>(); }
+
+
     // Logic
-    public int coins;
+    [SerializeField]
+    private int coins = 0;
 
     private void Awake()
     {
@@ -30,14 +39,18 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-
         instance = this;
         SceneManager.sceneLoaded += LoadState;
         DontDestroyOnLoad(gameObject);
     }
 
+    public void print(string msg) => Debug.Log(msg);
 
-
+    public void AddCoins(int newCoins)
+    {
+        coins += newCoins;
+        OnCoinsChanged?.Invoke(coins);
+    }
 
 
     public void ShowText(string msg, int fontSize, Color color, Vector3 position, Vector3 motion, float duration)
@@ -70,7 +83,7 @@ public class GameManager : MonoBehaviour
         string[] data = PlayerPrefs.GetString("SaveState").Split('|');
 
         // TODO: Change player skin
-        coins = int.Parse(data[1]);
+        //coins = int.Parse(data[1]); //TODO BUG: this gave 45 coins at every start of the main scene
         // TODO: Change weapon level
     }
 }
