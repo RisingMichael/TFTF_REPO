@@ -12,6 +12,8 @@ public class Projectile : Collidable
 
     private const float selfDestructTime = 5.0f;
 
+    private bool isVolatile = true;
+
     public void Initialize(int damage, float pushForce,
         Vector3 moveDir, Sprite sprite)
     {
@@ -38,6 +40,7 @@ public class Projectile : Collidable
         if (coll.tag == "Collectable") return; 
         if (coll.tag == "Fighter")
         {
+            if (!isVolatile) return;
             if (coll.name == "Player") return;
 
             // Create new damage object, before sending it to the player
@@ -48,12 +51,12 @@ public class Projectile : Collidable
                 pushForce = pushForce
             };
 
-            coll.SendMessage("ReceiveDamage", dmg);
+            coll.SendMessage("ReceiveDamage", dmg);            
         }
 
         //destroy projectile if has hit something (inefficient but since it is a prototype a objectpool is not necessary)
         GetComponent<SpriteRenderer>().enabled = false;
-        GetComponent<BoxCollider2D>().enabled = false;
+        isVolatile = false;
     }
 
     IEnumerator SelfDestructCounter()

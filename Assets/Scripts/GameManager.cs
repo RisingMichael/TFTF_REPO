@@ -44,6 +44,11 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape)) Application.Quit();
+    }
+
     public void print(string msg) => Debug.Log(msg);
 
     public void AddCoins(int newCoins)
