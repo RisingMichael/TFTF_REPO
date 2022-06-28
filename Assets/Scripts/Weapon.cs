@@ -51,9 +51,6 @@ public class Weapon : Collidable
 
     private SpriteRenderer spriteRenderer;
 
-    //Reader
-    private WeaponReader weaponReader;
-
     // Swing
     private Animator anim;
     private float cooldown = 0.3f;
@@ -64,7 +61,6 @@ public class Weapon : Collidable
     protected override void Awake()
     {
         base.Awake();
-        weaponReader = new WeaponReader(this);
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
 

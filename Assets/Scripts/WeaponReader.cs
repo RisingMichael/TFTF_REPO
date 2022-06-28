@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Networking;
 using System;
 using System.Net;
 using System.IO;
@@ -8,8 +9,10 @@ using System.Text.RegularExpressions;
 using System.Text;
 using System.Linq;
 
-public class WeaponReader
+public class WeaponReader : MonoBehaviour
 {
+    private const string apiAdress = "https://tftf-new.herokuapp.com/classification/";
+
     private const float pushForce = 0.2f;
     private const float meleeCooldown = 0.3f;
     private const float rangeCooldown = 1.0f;
@@ -30,8 +33,6 @@ public class WeaponReader
     private const float mediumDamageThreshold = 2.0f; 
     private const float highDamageThreshold = 4.0f;
 
-    private Weapon weaponLogic;
-
     private Sprite duckSprite;
 
     private Sprite badMeleeWeaponSprite;
@@ -44,9 +45,9 @@ public class WeaponReader
     private Sprite mediumProjectileSprite;
     private Sprite goodProjectileSprite;
 
-    public WeaponReader(Weapon weaponLogic)
+
+    private void Awake()
     {
-        this.weaponLogic = weaponLogic;
         TextInputManager.OnInputReceived += ReadWeaponData;
 
         //read out sprites directly from the resources folder
@@ -76,27 +77,10 @@ public class WeaponReader
 
     private void ReadWeaponData(string givenInput, float percTimeSpent)
     {
-        APIHelper.ReadData data = APIHelper.GetData(givenInput);
-
-        //calculate every value
-        int uses = CalculateUses(givenInput, data);
-        int value = 1;
-        int damage = CalculateDamage(givenInput, percTimeSpent, data);
-        Sprite weaponSprite = ChooseWeaponSprite(damage, data);
-        Sprite projectileSprite = ChooseProjectileSprite(damage, data);
-        bool isRanged = data.type == rangedString;
-
-        float cooldown = meleeCooldown;
-        if (data.type == rangedString) cooldown = rangeCooldown;
-
-        //create weapondata using the values
-        WeaponData weaponData = new WeaponData(givenInput, uses, value, damage,
-            pushForce, cooldown, isRanged, weaponSprite, projectileSprite);
-
-        weaponLogic.InitializeWithNewWeapon(weaponData);
+        StartCoroutine(GetRequest(givenInput, percTimeSpent));
     }
 
-    private int CalculateDamage(string givenInput, float percTimeSpent, APIHelper.ReadData data)
+    private int CalculateDamage(string givenInput, float percTimeSpent, ReadData data)
     {
         if (data.type == noWeaponString) return minDamage;
         if (data.recognizedWord.Length == 0) return minDamage;
@@ -120,7 +104,7 @@ public class WeaponReader
         return damage;
     }
 
-    private int CalculateUses(string givenInput, APIHelper.ReadData data)
+    private int CalculateUses(string givenInput, ReadData data)
     {
         if (data.type == noWeaponString) return minAmountUses;
         if (data.recognizedWord.Length == 0) return minAmountUses;
@@ -130,7 +114,7 @@ public class WeaponReader
         return meleeAmountUses;
     }
 
-    private Sprite ChooseWeaponSprite(float damage, APIHelper.ReadData data)
+    private Sprite ChooseWeaponSprite(float damage, ReadData data)
     {
         if (data.type == noWeaponString) return duckSprite;
         if (data.type == rangedString) return rangeWeaponSprite;
@@ -140,7 +124,7 @@ public class WeaponReader
         return badMeleeWeaponSprite;
     }
 
-    private Sprite ChooseProjectileSprite(float damage, APIHelper.ReadData data)
+    private Sprite ChooseProjectileSprite(float damage, ReadData data)
     {
         if (data.type == noWeaponString) return null;
         if (data.type != rangedString) return null;
@@ -149,41 +133,63 @@ public class WeaponReader
         if (damage >= mediumDamageThreshold) return mediumProjectileSprite;
         return badProjectileSprite;
     }
-}
 
-public static class APIHelper
-{
-    private const string apiAdress = "https://tftf-new.herokuapp.com/classification/";
 
-    public class ReadData
+    IEnumerator GetRequest(string givenInput, float percTimeSpent)
+    {
+        string processedInput = givenInput.Replace(' ', '_');
+        string fullUriString = apiAdress + processedInput;
+
+        using (UnityWebRequest webRequest = UnityWebRequest.Get(fullUriString))
+        {
+            yield return webRequest.SendWebRequest();
+
+            int uses = minAmountUses;
+            int value = 1;
+            int damage = minDamage;
+            Sprite weaponSprite = duckSprite;
+            Sprite projectileSprite = null;
+            bool isRanged = false;
+            float cooldown = meleeCooldown;
+
+            switch (webRequest.result)
+            {
+                case UnityWebRequest.Result.ConnectionError:
+                case UnityWebRequest.Result.DataProcessingError:
+                case UnityWebRequest.Result.ProtocolError:
+                    //if an error occured a duck is produced 
+                    break;
+                case UnityWebRequest.Result.Success:
+
+                    //if request is successful, the weapon is read out 
+                    ReadData data = JsonUtility.FromJson<ReadData>(
+                        webRequest.downloadHandler.text);
+
+                    uses = CalculateUses(givenInput, data);
+                    damage = CalculateDamage(givenInput, percTimeSpent, data);
+                    weaponSprite = ChooseWeaponSprite(damage, data);
+                    projectileSprite = ChooseProjectileSprite(damage, data);
+                    isRanged = data.type == rangedString;
+                    if (data.type == rangedString) cooldown = rangeCooldown;
+
+                    break;
+            }
+
+            //create weapondata using the values
+            WeaponData weaponData = new WeaponData(givenInput, uses, value, damage,
+                pushForce, cooldown, isRanged, weaponSprite, projectileSprite);
+
+            GameManager.instance.player.GetComponentInChildren<Weapon>().InitializeWithNewWeapon(weaponData);
+
+        }
+    }
+
+    private class ReadData
     {
         public string recognizedWord;
         public string type;
         public int typoAmount;
     }
-
-    public static ReadData GetData(string input)
-    {
-        string processedInput = input.Replace(' ', '_');
-        string fullUriString = apiAdress + processedInput;
-        try
-        {
-            //contact server
-            //TODO (Maybe): thread this part of the code since this part costs a lot of performance
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(fullUriString);
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            StreamReader reader = new StreamReader(response.GetResponseStream());
-            string json = reader.ReadToEnd();
-            return JsonUtility.FromJson<ReadData>(json);
-        }
-        catch (Exception)
-        {
-            return new ReadData { recognizedWord = "", type = "other", typoAmount = 0 };
-        }
-
-
-    }
-
 }
 
 

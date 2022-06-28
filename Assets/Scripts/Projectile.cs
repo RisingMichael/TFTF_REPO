@@ -12,6 +12,8 @@ public class Projectile : Collidable
 
     private const float selfDestructTime = 5.0f;
 
+    private const float deactivationTime = 0.1f;
+
     private bool isVolatile = true;
 
     public void Initialize(int damage, float pushForce,
@@ -56,6 +58,12 @@ public class Projectile : Collidable
 
         //destroy projectile if has hit something (inefficient but since it is a prototype a objectpool is not necessary)
         GetComponent<SpriteRenderer>().enabled = false;
+        StartCoroutine(DeactivateProjectile());
+    }
+
+    IEnumerator DeactivateProjectile()
+    {
+        yield return new WaitForSeconds(deactivationTime);
         isVolatile = false;
     }
 
