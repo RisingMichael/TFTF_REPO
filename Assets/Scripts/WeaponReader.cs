@@ -13,7 +13,8 @@ public class WeaponReader : MonoBehaviour
 {
     private const string apiAdress = "https://tftf-new.herokuapp.com/classification/";
 
-    private const float pushForce = 0.2f;
+    private const float meleePushForce = 0.8f;
+    private const float rangePushForce = 2.5f;
     private const float meleeCooldown = 0.3f;
     private const float rangeCooldown = 1.0f;
 
@@ -101,6 +102,10 @@ public class WeaponReader : MonoBehaviour
         damage -= data.typoAmount;
         damage = Mathf.Max(1, damage);
 
+        //modify damage using the last input strings
+        LinkedList<string> lastInputs = GameManager.instance.textInputManager.lastInputStrings;
+        //TODO: actually do the calculation based on last inputs here
+
         return damage;
     }
 
@@ -134,7 +139,6 @@ public class WeaponReader : MonoBehaviour
         return badProjectileSprite;
     }
 
-
     IEnumerator GetRequest(string givenInput, float percTimeSpent)
     {
         string processedInput = givenInput.Replace(' ', '_');
@@ -151,6 +155,7 @@ public class WeaponReader : MonoBehaviour
             Sprite projectileSprite = null;
             bool isRanged = false;
             float cooldown = meleeCooldown;
+            float pushForce = meleePushForce;
 
             switch (webRequest.result)
             {
@@ -171,6 +176,7 @@ public class WeaponReader : MonoBehaviour
                     projectileSprite = ChooseProjectileSprite(damage, data);
                     isRanged = data.type == rangedString;
                     if (data.type == rangedString) cooldown = rangeCooldown;
+                    if (data.type == rangedString) pushForce = rangePushForce;
 
                     break;
             }

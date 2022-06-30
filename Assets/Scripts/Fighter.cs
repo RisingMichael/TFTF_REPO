@@ -20,7 +20,7 @@ public class Fighter : MonoBehaviour
 
 
     // All fighters receive Damage / Die
-    protected virtual void ReceiveDamage(Damage dmg)
+    public virtual void ReceiveDamage(Damage dmg)
     {
         if(Time.time - lastImmune > immuneTime)
         {

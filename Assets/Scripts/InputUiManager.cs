@@ -16,43 +16,19 @@ public class InputUiManager : MonoBehaviour
 
     private float startBarWidth;
 
-    private const int lastStringCap = 7;
-    private const int lineSize = 35;
-
-    private LinkedList<string> lastStrings;
-
     private void Awake()
     {
-        lastStrings = new LinkedList<string>();
-
         TextInputManager.OnChangeActiveState += ShowInputCanvas;
         TextInputManager.OnTimerUpdated += UpdateTimerBar;
-        TextInputManager.OnInputReceived += UpdateLastStrings;
+        TextInputManager.OnSavedStringsChanged += UpdateLastStrings;
         
 
         startBarWidth = timeBarObject.GetComponent<RectTransform>().rect.width;
     }
 
-    private void UpdateLastStrings(string lastStr, float notImportant)
+    private void UpdateLastStrings(string lastStrings)
     {
-        lastStrings.AddLast(lastStr);
-        if (lastStrings.Count > lastStringCap) lastStrings.RemoveFirst();
-
-        string result = "";
-        foreach (string str in lastStrings)
-        {
-            string line = "- " + str + '\n';
-
-            if (line.Length > lineSize)
-            {
-                line = line.Substring(0, lineSize);
-                line += "...\n";
-            }
-
-            result += line;
-        }       
-
-        lastStringsObject.GetComponent<TMP_Text>().text = result;
+        lastStringsObject.GetComponent<TMP_Text>().text = lastStrings;
     }
 
     private void ShowInputCanvas(bool show) => canvasObject.SetActive(show);

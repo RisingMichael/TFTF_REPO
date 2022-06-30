@@ -8,7 +8,14 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+
+    /// <summary>
+    /// value int: the current amount of coins
+    /// </summary>
     public static Action<int> OnCoinsChanged;
+
+    private const int coinPenalty = 5;
+    private const int healthPenalty = 5;
 
     // Ressources
     public List<Sprite> playerSprites;
@@ -57,6 +64,24 @@ public class GameManager : MonoBehaviour
         OnCoinsChanged?.Invoke(coins);
     }
 
+    public void EnactCoinPenalty()
+    {
+        if (coins == 0)
+        {
+            Damage dmg = new Damage
+            {
+                damageAmount = healthPenalty,
+                origin = player.transform.position,
+                pushForce = 0.0f
+            };
+
+            player.ReceiveDamage(dmg);
+        }
+
+        coins -= coinPenalty;
+        coins = Mathf.Max(0, coins);
+        OnCoinsChanged?.Invoke(coins);
+    }
 
     public void ShowText(string msg, int fontSize, Color color, Vector3 position, Vector3 motion, float duration)
     {

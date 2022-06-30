@@ -24,13 +24,26 @@ public class TextInputManager : MonoBehaviour
     /// </summary>
     public static event Action<string, float> OnInputReceived;
 
+    /// <summary>
+    /// string given: the last seven concatenated input strings 
+    /// </summary>
+    public static event Action<string> OnSavedStringsChanged;
+
     public const float timeLimitInSec = 3.0f;
     public const float timeBufferInSec = 1.0f;
+    public const float tutorialBufferInSec = 5.0f;
     private const float slowDownMod = 0.0001f;
-    private const float coolDown = 0.5f;
+    private const float coolDown = 1.0f;
+
+    private const int lastStringCap = 7;
+    private const int lineSize = 35;
 
     private bool textInputActivated = false;
     private bool canBeActivated = true;
+
+    private int usageCounter = 0;
+
+    private LinkedList<string> lastStrings;
 
     [SerializeField]
     private GameObject inputFieldObject;
@@ -38,6 +51,13 @@ public class TextInputManager : MonoBehaviour
     private float secsLeft = timeLimitInSec + timeBufferInSec;
 
     public bool isActive { get => textInputActivated; }
+
+    public LinkedList<string> lastInputStrings { get => lastStrings; }
+
+    private void Awake()
+    {
+        lastStrings = new LinkedList<string>();
+    }
 
     private void Update()
     {
@@ -57,12 +77,13 @@ public class TextInputManager : MonoBehaviour
 
     public void ActivateTextInput()
     {
-        if (!canBeActivated || textInputActivated) return;
-        
+        if (!canBeActivated || textInputActivated) return;        
         canBeActivated = false;
-        StartCoroutine(CoolDown());
 
-        secsLeft = timeLimitInSec + timeBufferInSec;
+        float actualTutorialBuffer = Mathf.Max(0.0f, tutorialBufferInSec - (float)usageCounter);
+        secsLeft = timeLimitInSec + timeBufferInSec + actualTutorialBuffer;
+        usageCounter++;
+
         Time.timeScale = slowDownMod; //slow down game
 
         textInputActivated = true;
@@ -75,12 +96,44 @@ public class TextInputManager : MonoBehaviour
         if (!textInputActivated) return;
         textInputActivated = false;
         string input = inputFieldObject.GetComponent<TMP_InputField>().text;
+
+        if (input.Length == 0) GameManager.instance.EnactCoinPenalty();
+
         inputFieldObject.GetComponent<TMP_InputField>().text = ""; //empty text input
         inputFieldObject.GetComponent<TMP_InputField>().DeactivateInputField();
 
         OnChangeActiveState?.Invoke(false); //deactivate Ui
         Time.timeScale = 1.0f;
-        if (input.Length > 0) OnInputReceived?.Invoke(input, percentageOfTimeLeft); //send out input and the time spent 
+        if (input.Length > 0)
+        {
+            OnInputReceived?.Invoke(input, percentageOfTimeLeft); //send out input and the time spent 
+            SaveString(input);
+        }
+        StartCoroutine(CoolDown());
+    }
+
+    private void SaveString(string lastStr)
+    {
+        //add string to string list
+        lastStrings.AddLast(lastStr);
+        if (lastStrings.Count > lastStringCap) lastStrings.RemoveFirst();
+
+        //create concatenated string to send to the UI
+        string displayedString = "";
+        foreach (string str in lastStrings)
+        {
+            string line = "- " + str + '\n';
+
+            if (line.Length > lineSize)
+            {
+                line = line.Substring(0, lineSize);
+                line += "...\n";
+            }
+
+            displayedString += line;
+        }
+
+        OnSavedStringsChanged?.Invoke(displayedString);
     }
 
     public float percentageOfTimeLeft { get => Mathf.Min(timeLimitInSec, secsLeft) / timeLimitInSec; }
