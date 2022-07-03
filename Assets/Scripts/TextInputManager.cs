@@ -97,8 +97,6 @@ public class TextInputManager : MonoBehaviour
         textInputActivated = false;
         string input = inputFieldObject.GetComponent<TMP_InputField>().text;
 
-        if (input.Length == 0) GameManager.instance.EnactCoinPenalty();
-
         inputFieldObject.GetComponent<TMP_InputField>().text = ""; //empty text input
         inputFieldObject.GetComponent<TMP_InputField>().DeactivateInputField();
 

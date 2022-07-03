@@ -14,8 +14,13 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public static Action<int> OnCoinsChanged;
 
-    private const int coinPenalty = 5;
-    private const int healthPenalty = 5;
+    //used when a non weapon is requested
+    private const int smallCoinPenalty = 1;
+    private const int smallHealthPenalty = 1;
+
+    //used when no string was entered
+    private const int bigCoinPenalty = 5;
+    private const int bigHealthPenalty = 5;
 
     // Ressources
     public List<Sprite> playerSprites;
@@ -40,15 +45,16 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if(GameManager.instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
         instance = this;
-        SceneManager.sceneLoaded += LoadState;
-        DontDestroyOnLoad(gameObject);
+        //if(GameManager.instance != null)
+        //{
+        //    Destroy(gameObject);
+        //    return;
+        //}
+
+
+        //SceneManager.sceneLoaded += LoadState;
+        //DontDestroyOnLoad(gameObject);
     }
 
     private void Update()
@@ -64,8 +70,17 @@ public class GameManager : MonoBehaviour
         OnCoinsChanged?.Invoke(coins);
     }
 
-    public void EnactCoinPenalty()
+    public void EnactCoinPenalty(bool isBigPenalty)
     {
+        int healthPenalty = smallHealthPenalty;
+        int coinPenalty = smallCoinPenalty;
+
+        if (isBigPenalty)
+        {
+            healthPenalty = bigHealthPenalty;
+            coinPenalty = bigCoinPenalty;
+        }
+
         if (coins == 0)
         {
             Damage dmg = new Damage
@@ -88,7 +103,12 @@ public class GameManager : MonoBehaviour
         floatingTextManager.Show(msg, fontSize, color, position, motion, duration);
     }
 
-
+    //gets called when you press the "Again" button on the game over screen
+    public void ReloadGame()
+    {
+        //reloads the scene!
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 
 
     public void SaveState()

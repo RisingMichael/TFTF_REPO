@@ -22,6 +22,9 @@ public class DisplayUiManager : MonoBehaviour
     [SerializeField]
     private GameObject weaponDataObject;
 
+    [SerializeField]
+    private GameObject gameOverObject;
+
     private float startBarWidth;
 
     private void Awake()
@@ -29,10 +32,20 @@ public class DisplayUiManager : MonoBehaviour
         GameManager.OnCoinsChanged += UpdateCoins;
         Player.OnHealthChanged += UpdateHealthBar;
         Weapon.OnWeaponInfoChanged += UpdateWeaponInfo;
+        Player.OnDeath += ShowGameOverWindow;
 
         startBarWidth = healthBarObject.GetComponent<RectTransform>().rect.width;
     }
 
+    private void OnDestroy()
+    {
+        GameManager.OnCoinsChanged -= UpdateCoins;
+        Player.OnHealthChanged -= UpdateHealthBar;
+        Weapon.OnWeaponInfoChanged -= UpdateWeaponInfo;
+        Player.OnDeath -= ShowGameOverWindow;
+    }
+
+    private void ShowGameOverWindow() => gameOverObject.SetActive(true);
 
     private void UpdateHealthBar(float percentage)
     {

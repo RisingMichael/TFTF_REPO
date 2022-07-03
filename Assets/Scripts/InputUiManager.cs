@@ -12,7 +12,14 @@ public class InputUiManager : MonoBehaviour
     private GameObject lastStringsObject;
 
     [SerializeField]
+    private GameObject lastStringsTitleObject;
+
+    private const string lastStringsTitle = "Last \"Items\" that you wanted:";
+
+    [SerializeField]
     private GameObject timeBarObject;
+
+    private bool isFirstDisplay = true;
 
     private float startBarWidth;
 
@@ -26,9 +33,22 @@ public class InputUiManager : MonoBehaviour
         startBarWidth = timeBarObject.GetComponent<RectTransform>().rect.width;
     }
 
+    private void OnDestroy()
+    {
+        TextInputManager.OnChangeActiveState -= ShowInputCanvas;
+        TextInputManager.OnTimerUpdated -= UpdateTimerBar;
+        TextInputManager.OnSavedStringsChanged -= UpdateLastStrings;
+    }
+
     private void UpdateLastStrings(string lastStrings)
     {
-        lastStringsObject.GetComponent<TMP_Text>().text = lastStrings;
+        if (isFirstDisplay)
+        {
+            lastStringsTitleObject.GetComponent<TMP_Text>().text = lastStringsTitle;
+            lastStringsObject.GetComponent<TMP_Text>().alignment = TextAlignmentOptions.TopLeft;
+            isFirstDisplay = false;
+        }
+        lastStringsObject.GetComponent<TMP_Text>().text = lastStrings;        
     }
 
     private void ShowInputCanvas(bool show) => canvasObject.SetActive(show);

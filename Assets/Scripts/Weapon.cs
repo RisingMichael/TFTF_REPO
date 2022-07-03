@@ -68,7 +68,6 @@ public class Weapon : Collidable
         usesLeft = 0;
         broken = true;
         spriteRenderer.enabled = false;
-        OnWeaponInfoChanged?.Invoke(false);
     }
 
     public int uses { get => usesLeft; }
@@ -77,7 +76,8 @@ public class Weapon : Collidable
     protected override void Update()
     {
         base.Update();
-        
+
+        if (GetComponentInParent<Player>().isDead) return;
         if (GameManager.instance.textInputManager.isActive) return;
 
         if (Input.GetKeyDown(KeyCode.Return))

@@ -13,9 +13,8 @@ public class Enemy : Mover
 
     private bool chasing;
     private bool collidingWithPlayer;
-    private Transform playerTransform;
-    private Vector3 startingPosition;
 
+    private Vector3 startingPosition;
 
     // Hitbox
     public ContactFilter2D filter;
@@ -23,11 +22,9 @@ public class Enemy : Mover
     private Collider2D[] hits = new Collider2D[10];
 
 
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
-
-        playerTransform = GameManager.instance.player.transform;
+        base.Awake();
         startingPosition = transform.position;
         // Get the hitbox(is the first child of the enemy object)
         hitBox = transform.GetChild(0).GetComponent<BoxCollider2D>();
@@ -37,7 +34,8 @@ public class Enemy : Mover
     private void FixedUpdate()
     {
         // Check if player in range
-        if(Vector3.Distance(playerTransform.position, startingPosition) < chaseLength)
+        Transform playerTransform = GameManager.instance.player.transform;
+        if (Vector3.Distance(playerTransform.position, startingPosition) < chaseLength)
         {
             if (Vector3.Distance(playerTransform.position, startingPosition) < triggerLength)
                 chasing = true;

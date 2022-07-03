@@ -76,8 +76,13 @@ public class WeaponReader : MonoBehaviour
         goodProjectileSprite = Resources.Load<Sprite>("Artwork\\Projectile3");
     }
 
-    private void ReadWeaponData(string givenInput, float percTimeSpent)
+    private void OnDestroy()
     {
+        TextInputManager.OnInputReceived -= ReadWeaponData;
+    }
+
+    private void ReadWeaponData(string givenInput, float percTimeSpent)
+    {      
         StartCoroutine(GetRequest(givenInput, percTimeSpent));
     }
 
@@ -141,6 +146,9 @@ public class WeaponReader : MonoBehaviour
 
     IEnumerator GetRequest(string givenInput, float percTimeSpent)
     {
+        //enact penalty here
+        if (givenInput.Length == 0) GameManager.instance.EnactCoinPenalty(true);
+
         string processedInput = givenInput.Replace(' ', '_');
         string fullUriString = apiAdress + processedInput;
 
@@ -175,8 +183,16 @@ public class WeaponReader : MonoBehaviour
                     weaponSprite = ChooseWeaponSprite(damage, data);
                     projectileSprite = ChooseProjectileSprite(damage, data);
                     isRanged = data.type == rangedString;
-                    if (data.type == rangedString) cooldown = rangeCooldown;
-                    if (data.type == rangedString) pushForce = rangePushForce;
+                    if (isRanged)
+                    {
+                        cooldown = rangeCooldown;
+                        pushForce = rangePushForce;
+                    }
+
+                    if (data.type == noWeaponString)
+                    {
+                        GameManager.instance.EnactCoinPenalty(false);
+                    }                        
 
                     break;
             }

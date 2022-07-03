@@ -10,8 +10,15 @@ public class Player : Mover
     /// </summary>
     public static event Action<float> OnHealthChanged;
 
+    public static event Action OnDeath;
+
+    private bool dead = false;
+
+    public bool isDead { get => dead; }
+
     private void FixedUpdate()
     {
+        if (dead) return;
         if (GameManager.instance.textInputManager.isActive) return;
 
         float x = Input.GetAxisRaw("Horizontal");
@@ -32,5 +39,12 @@ public class Player : Mover
         Debug.Log("Hp perc: " + percentage);
 
         OnHealthChanged?.Invoke(percentage);
+    }
+
+    protected override void Death()
+    {
+        dead = true;
+        gameObject.SetActive(false);
+        OnDeath?.Invoke();
     }
 }
