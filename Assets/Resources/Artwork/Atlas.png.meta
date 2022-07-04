@@ -244,7 +244,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HealingFountain_2
+      name: HealingFountain_1_Floor
       rect:
         serializedVersion: 2
         x: 0
@@ -1386,7 +1386,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1394,6 +1394,657 @@ TextureImporter:
       bones: []
       spriteID: d1ff91938339a4b4b9a0e0d60fad77af
       internalID: 1012526638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Floor_Skull
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52460055a2a1ca148878f5e307641523
+      internalID: 145255147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sewage_Floor
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d9aba9c4c88d2946ba3efa20d51f494
+      internalID: 140544930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sewage_Wall_0
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 224
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89ff9ad0d4e656d4486c71f3e9e77714
+      internalID: -1120337681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sewage_Wall_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6422328c007721e4c962fd047fa1c978
+      internalID: 1040138325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall_Grid_0
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a6d54749c3fb3949b982a88543c52ce
+      internalID: -742530349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sewage_Wall_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2680ac3fc813fcc42a17e023430fe816
+      internalID: -486983784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sewage_Wall_3
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a1ec76c5b44b6e4c886e093c5faba7d
+      internalID: 761187704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall_Grid_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 224
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 277f8e9ce0cbb224bb06f4b39dd67abe
+      internalID: -1768378022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall_Hole_0
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 208
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8b54ef2eaf205640a0891bd330a4d2d
+      internalID: 598980447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall_Hole_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3be8e52b6c7c45a4287d11bf5feb63fe
+      internalID: 89954534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Healing_Fountain_2
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b61d6d698693b194fb752297c27a736b
+      internalID: -1407984712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HealingFountain_2_Floor
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a79aaccbf2bcb4478a1dc3925635a7d
+      internalID: -2120759860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Healing_Fountain_2_Top
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee0eb9e1414a29d4599e98b4138c16a2
+      internalID: -29712654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall_Grime_0
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 240
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ae5c90e07a39a8459e96527390eaef0
+      internalID: -869024831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall_Grime_1
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 224
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b15ffe3942f10443a069a81de74d293
+      internalID: 1142102070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall_Grime_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 224
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa0724a535bed9841a4e57d06613854b
+      internalID: -1431462646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green_fountain_Wall_0
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2906c9a816fe4d74a9c2787b29ec2a04
+      internalID: -554062973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green_fountain_Wall_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f7a66bac61444c47a4e29a873155793
+      internalID: -827041201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green_fountain_Floor_0
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98cfb6205a1ead146b2d54fa5d0f5ed1
+      internalID: 1760822075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green_fountain_Floor_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 217ad38c4e33021469582f51bc535bbd
+      internalID: -244236949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue_fountain_Wall_0
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47ef73e790694284fb23b95211080513
+      internalID: 1961644975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue_fountain_Wall_1
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06938262b08f6ff499321d6e6b4f2ee8
+      internalID: -1418560568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue_fountain_Floor_0
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3658786824ca5f54e908289fef15c682
+      internalID: 1246872301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue_fountain_Floor_1
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 920f61e4f6636324f955761c05931bd4
+      internalID: 119523225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red_Wall_flag
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4953497116efb2a428d2de379c2a2f5a
+      internalID: 32565262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Green_Wall_flag
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71491b0253223444fb3fc42e2c1e7b31
+      internalID: 764771879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue_Wall_flag
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afaef6af98b661948a2e9d0730b8ad34
+      internalID: -909201560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yellow_Wall_flag
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4ea7f7474d94f248b64c974b9e21d5a
+      internalID: -656535285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_1
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97bfc37b21c69a74fb61246a5a572ea5
+      internalID: 1104503617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_3
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 48
+        width: 20
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1420243decbd67b42ad383d596594f1e
+      internalID: -736597336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Full_Heeling_Fountain
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 16
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cef042b6503fe7345bb4d93bf7e2f2d3
+      internalID: -737888465
       vertices: []
       indices: 
       edges: []
@@ -1409,64 +2060,95 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Floor_8: -132494590
+      Wall_Hole_1: 89954534
+      Crates_0: 966428693
       Floor_4: 646716930
       Weapon_5: -1624538060
-      Crates_0: 966428693
+      Pillar_4: 1070889106
       Wall_3: 503775177
+      Crates_1: 766656667
+      Healing_Fountain_2: -1407984712
+      Sewage_Wall_0: -1120337681
+      Green_fountain_Wall_0: -554062973
+      Wall_1: -1865063454
+      Crates_2: -1127760412
+      Torch_2: -402975131
+      Stairs_2: -871306638
+      Weapon_0: 1184032358
+      Torch_5: -973762647
+      HealingFountain_1: 894594843
+      Green_fountain_Floor_1: -244236949
+      Stairs_0: 1270996553
+      Blue_fountain_Floor_1: 119523225
+      floor_0: -226239505
+      Wall_9: 1204687068
+      Floor_7: -1725304043
+      Yellow_Wall_flag: -656535285
+      Torch_8: -1341844944
+      Weapon_4: 1665424731
+      Stairs_1: 1832938319
+      Blue_fountain_Wall_0: 1961644975
+      Sewage_Wall_2: -486983784
+      Blue_Wall_flag: -909201560
+      Wall_4: -1019449909
+      Weapon_3: -1757307119
+      Wall_Grime_1: 1142102070
+      Wall_Grid_1: -1768378022
+      Pillar_0: 1682240814
+      Healing_Fountain_2_Top: -29712654
+      Floor_5: -1505019082
+      Enemy_1: 1104503617
+      Sewage_Floor: 140544930
+      Floor_8: -132494590
+      Enemy_0: 1012526638
+      Wall_Grid_0: -742530349
       Wall_5: -1868394773
       Wall_2: 2102954938
       wall_0: -75848615
       Wall_7: 1982742390
       Torch_7: 790274783
-      Floor_2: 289500263
-      Crates_1: 766656667
       Chest_0: 887854492
-      Wall_1: -1865063454
+      Blue_fountain_Floor_0: 1246872301
+      Floor_2: 289500263
       Floor_9: -1858280500
-      Crates_2: -1127760412
       Pillar_06: 365597750
-      Stairs_2: -871306638
-      Pillar_4: 1070889106
-      player_0: 133245621
       Torch_6: -2069926454
-      Weapon_0: 1184032358
-      Torch_2: -402975131
-      Torch_5: -973762647
-      HealingFountain_1: 894594843
-      Enemy_0: 1012526638
+      player_0: 133245621
+      Floor_Skull: 145255147
+      Sewage_Wall_3: 761187704
+      Red_Wall_flag: 32565262
       Floor_3: 1682640795
-      Stairs_0: 1270996553
       Floor_1: 6556317
+      Green_fountain_Wall_1: -827041201
       Torch_4: -1125221406
       Torch_3: 22144857
+      Full_Heeling_Fountain: -737888465
+      Green_fountain_Floor_0: 1760822075
       Wall_6: -1396311582
       Torch_1: 615451300
-      floor_0: -226239505
       player_1: -915056596
-      Wall_9: 1204687068
+      Wall_Grime_0: -869024831
       Crates_3: -1722818061
       Weapon_6: 1543908061
-      Floor_7: -1725304043
       Weapon_1: -493861264
+      HealingFountain_2_Floor: -2120759860
       Stairs_3: -1384897935
-      HealingFountain_2: -1219149965
       Floor_6: -260728612
       Weapon_2: 925238111
-      Torch_8: -1341844944
-      Weapon_4: 1665424731
       Pillar_1: 1071574342
-      Stairs_1: 1832938319
       Torch_0: -608467109
       Pillar_2: -469289213
-      Wall_4: -1019449909
+      HealingFountain_1_Floor: -1219149965
+      Enemy_3: -736597336
       Floor_11: -232269294
-      Weapon_3: -1757307119
+      Blue_fountain_Wall_1: -1418560568
       Chest_1: 850214460
-      Pillar_0: 1682240814
+      Wall_Grime_2: -1431462646
       Wall_8: 1935633479
       Floor_10: 1341804482
-      Floor_5: -1505019082
+      Green_Wall_flag: 764771879
+      Wall_Hole_0: 598980447
+      Sewage_Wall_1: 1040138325
       Floor_12: 1508738937
       HealingFountain_0: 98228456
       Pillar_5: 1230914219

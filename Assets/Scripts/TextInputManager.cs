@@ -65,7 +65,7 @@ public class TextInputManager : MonoBehaviour
 
         //everything else in the game is slowed down
         //so we have to speed the TimeInputManager back up
-        secsLeft -= Time.deltaTime / slowDownMod;
+        secsLeft -= Time.unscaledDeltaTime;
         secsLeft = Mathf.Max(secsLeft, 0.0f);
 
         //update the ui but only every 0.005 seconds and not every frame

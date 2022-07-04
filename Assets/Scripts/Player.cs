@@ -41,6 +41,15 @@ public class Player : Mover
         OnHealthChanged?.Invoke(percentage);
     }
 
+
+    public override void Heal(int amount)
+    {
+        base.Heal(amount);
+        float percentage = (float)hitpoints / (float)maxHitpoints;
+        OnHealthChanged?.Invoke(percentage);
+    }
+
+
     protected override void Death()
     {
         dead = true;

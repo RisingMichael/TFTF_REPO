@@ -41,6 +41,17 @@ public class Fighter : MonoBehaviour
         }
     }
 
+
+    public virtual void Heal(int amount)
+    {
+        hitpoints += amount;
+
+        if (hitpoints > maxHitpoints)
+            hitpoints = maxHitpoints;
+    }
+
+
+
     protected virtual void Death()
     {
 
