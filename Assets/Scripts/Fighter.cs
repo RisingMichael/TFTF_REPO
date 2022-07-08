@@ -20,6 +20,7 @@ public class Fighter : MonoBehaviour
 
 
     // All fighters receive Damage / Die
+    //TODO: make the creatures flickering red when hit to indicate immuneTime
     public virtual void ReceiveDamage(Damage dmg)
     {
         if(Time.time - lastImmune > immuneTime)
@@ -46,14 +47,10 @@ public class Fighter : MonoBehaviour
     {
         hitpoints += amount;
 
-        if (hitpoints > maxHitpoints)
-            hitpoints = maxHitpoints;
+        if (hitpoints > maxHitpoints) hitpoints = maxHitpoints;
     }
 
 
 
-    protected virtual void Death()
-    {
-
-    }
+    protected virtual void Death() { }
 }

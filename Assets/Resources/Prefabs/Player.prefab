@@ -117,6 +117,7 @@ MonoBehaviour:
   weaponName: 
   damagePoint: 1
   pushForce: 5
+  isDuplicate: 0
   ranged: 0
 --- !u!61 &1649324608
 BoxCollider2D:
@@ -178,7 +179,7 @@ GameObject:
   - component: {fileID: 6976110321451064382}
   m_Layer: 7
   m_Name: Player
-  m_TagString: Fighter
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -197,7 +198,7 @@ Transform:
   m_Children:
   - {fileID: 1649324607}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6976110321451064380
 SpriteRenderer:

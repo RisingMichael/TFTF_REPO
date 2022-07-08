@@ -99,9 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb9628bb42531c479a2283232b84517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitpoints: 50
-  maxHitpoints: 50
-  pushRecoverySpeed: 0.2
+  hitpoints: 500
+  maxHitpoints: 500
+  pushRecoverySpeed: 0.8
   xpValue: 1
   triggerLength: 1
   chaseLength: 3
@@ -231,5 +231,5 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   boxCollider: {fileID: 877393834691282543}
-  damage: 5
-  pushForce: 3
+  damage: 20
+  pushForce: 10

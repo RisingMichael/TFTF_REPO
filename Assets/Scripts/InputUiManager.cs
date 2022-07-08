@@ -27,8 +27,7 @@ public class InputUiManager : MonoBehaviour
     {
         TextInputManager.OnChangeActiveState += ShowInputCanvas;
         TextInputManager.OnTimerUpdated += UpdateTimerBar;
-        TextInputManager.OnSavedStringsChanged += UpdateLastStrings;
-        
+        WeaponReader.OnSavedStringsChanged += UpdateLastStrings;        
 
         startBarWidth = timeBarObject.GetComponent<RectTransform>().rect.width;
     }
@@ -37,7 +36,7 @@ public class InputUiManager : MonoBehaviour
     {
         TextInputManager.OnChangeActiveState -= ShowInputCanvas;
         TextInputManager.OnTimerUpdated -= UpdateTimerBar;
-        TextInputManager.OnSavedStringsChanged -= UpdateLastStrings;
+        WeaponReader.OnSavedStringsChanged -= UpdateLastStrings;
     }
 
     private void UpdateLastStrings(string lastStrings)

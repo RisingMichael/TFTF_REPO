@@ -81,12 +81,23 @@ public class DisplayUiManager : MonoBehaviour
         string typeString = "Type: " + type + '\n';
 
         string usesString = "Uses: " + weaponLogic.uses + '\n';
+        string duplicateString = "[DUPLICATE]";
 
-        weaponDataObject.GetComponent<TMP_Text>().text = (damageString + typeString + usesString);
+        string resultString = damageString + typeString + usesString;
+        if (weaponLogic.isDuplicate) resultString += duplicateString;
+
+        weaponDataObject.GetComponent<TMP_Text>().text = resultString;
 
         if (changeOnlyUses) return;
 
         weaponNameObject.GetComponent<TMP_Text>().text = weaponLogic.weaponName;
+
+        if (weaponLogic.ranged || weaponLogic.damagePoint == 0)
+        {
+            weaponDisplayObject.GetComponent<RectTransform>().sizeDelta = new Vector2(100.0f, 100.0f);
+        }
+        else weaponDisplayObject.GetComponent<RectTransform>().sizeDelta = new Vector2(45.0f, 135.0f);
+
         weaponDisplayObject.GetComponent<Image>().sprite = weaponLogic.GetComponent<SpriteRenderer>().sprite;
     } 
 }

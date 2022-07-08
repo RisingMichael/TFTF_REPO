@@ -18,32 +18,16 @@ public class TextInputManager : MonoBehaviour
     /// </summary>
     public static event Action<bool> OnChangeActiveState;
 
-    /// <summary>
-    /// string given: the input string
-    /// float given: the remaining seconds left in percentage (range 0 - 1)
-    /// </summary>
-    public static event Action<string, float> OnInputReceived;
-
-    /// <summary>
-    /// string given: the last seven concatenated input strings 
-    /// </summary>
-    public static event Action<string> OnSavedStringsChanged;
-
     public const float timeLimitInSec = 3.0f;
     public const float timeBufferInSec = 1.0f;
     public const float tutorialBufferInSec = 5.0f;
     private const float slowDownMod = 0.0001f;
     private const float coolDown = 1.0f;
 
-    private const int lastStringCap = 7;
-    private const int lineSize = 35;
-
     private bool textInputActivated = false;
     private bool canBeActivated = true;
 
     private int usageCounter = 0;
-
-    private LinkedList<string> lastStrings;
 
     [SerializeField]
     private GameObject inputFieldObject;
@@ -51,13 +35,6 @@ public class TextInputManager : MonoBehaviour
     private float secsLeft = timeLimitInSec + timeBufferInSec;
 
     public bool isActive { get => textInputActivated; }
-
-    public LinkedList<string> lastInputStrings { get => lastStrings; }
-
-    private void Awake()
-    {
-        lastStrings = new LinkedList<string>();
-    }
 
     private void Update()
     {
@@ -101,37 +78,10 @@ public class TextInputManager : MonoBehaviour
         inputFieldObject.GetComponent<TMP_InputField>().DeactivateInputField();
 
         OnChangeActiveState?.Invoke(false); //deactivate Ui
+
+        GameManager.instance.weaponReader.ReadWeaponData(input, percentageOfTimeLeft);
         Time.timeScale = 1.0f;
-        if (input.Length > 0)
-        {
-            OnInputReceived?.Invoke(input, percentageOfTimeLeft); //send out input and the time spent 
-            SaveString(input);
-        }
         StartCoroutine(CoolDown());
-    }
-
-    private void SaveString(string lastStr)
-    {
-        //add string to string list
-        lastStrings.AddLast(lastStr);
-        if (lastStrings.Count > lastStringCap) lastStrings.RemoveFirst();
-
-        //create concatenated string to send to the UI
-        string displayedString = "";
-        foreach (string str in lastStrings)
-        {
-            string line = "- " + str + '\n';
-
-            if (line.Length > lineSize)
-            {
-                line = line.Substring(0, lineSize);
-                line += "...\n";
-            }
-
-            displayedString += line;
-        }
-
-        OnSavedStringsChanged?.Invoke(displayedString);
     }
 
     public float percentageOfTimeLeft { get => Mathf.Min(timeLimitInSec, secsLeft) / timeLimitInSec; }

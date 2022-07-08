@@ -11,6 +11,7 @@ public struct WeaponData
     public readonly int damage;
     public readonly float pushForce;
     public readonly float cooldown;
+    public readonly bool isDuplicate;
 
     public readonly bool ranged;
 
@@ -18,7 +19,7 @@ public struct WeaponData
     public readonly Sprite projectileSprite;
 
     public WeaponData(string name, int uses, int value, int damage, float pushForce,
-        float cooldown, bool ranged, Sprite sprite, Sprite projectileSprite)
+        float cooldown, bool ranged, Sprite sprite, Sprite projectileSprite, bool isDuplicate)
     {
         this.name = name;
         this.uses = uses;
@@ -29,13 +30,14 @@ public struct WeaponData
         this.ranged = ranged;
         this.sprite = sprite;
         this.projectileSprite = projectileSprite;
+        this.isDuplicate = isDuplicate;
     }
 }
 
 public class Weapon : Collidable
 {
     /// <summary>
-    /// bool value: true if only uses change; change if the whole weapon changed
+    /// 1. bool value: true if only uses change; change if the whole weapon changed
     /// </summary>
     public static event Action<bool> OnWeaponInfoChanged;
 
@@ -45,6 +47,7 @@ public class Weapon : Collidable
     private int usesLeft;
     public float pushForce;
 
+    public bool isDuplicate;
     public bool ranged;
 
     private bool broken = true;
@@ -172,6 +175,7 @@ public class Weapon : Collidable
         pushForce = weaponData.pushForce;
         cooldown = weaponData.cooldown;
         ranged = weaponData.ranged;
+        isDuplicate = weaponData.isDuplicate;
 
         projectileSprite = weaponData.projectileSprite;
         spriteRenderer.sprite = weaponData.sprite;

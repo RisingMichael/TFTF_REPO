@@ -33,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 877393834691282544}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &877393833913757882
 SpriteRenderer:
@@ -125,9 +125,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb9628bb42531c479a2283232b84517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitpoints: 10
-  maxHitpoints: 2
-  pushRecoverySpeed: 0.2
+  hitpoints: 20
+  maxHitpoints: 20
+  pushRecoverySpeed: 0.3
   xpValue: 1
   triggerLength: 0.6
   chaseLength: 1
@@ -232,4 +232,4 @@ MonoBehaviour:
     maxNormalAngle: 0
   boxCollider: {fileID: 0}
   damage: 5
-  pushForce: 3
+  pushForce: 2

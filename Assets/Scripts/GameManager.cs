@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     public TextInputManager textInputManager { get => GetComponent<TextInputManager>(); }
     public DisplayUiManager displayUiManager { get => GetComponent<DisplayUiManager>(); }
     public InputUiManager inputUiManager { get => GetComponent<InputUiManager>(); }
-
+    public WeaponReader weaponReader { get => GetComponent<WeaponReader>(); }
 
     // Logic
     [SerializeField]
@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) Application.Quit();
+        if (Input.GetKeyDown(KeyCode.Escape)) SceneManager.LoadScene("MainMenu");
     }
 
     public void print(string msg) => Debug.Log(msg);
