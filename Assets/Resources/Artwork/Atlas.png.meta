@@ -2049,6 +2049,90 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Enemy_4
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 48
+        width: 22
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d071646ffdb3d74aa578d85e23d07cc
+      internalID: 682656888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 48
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30faff8b49e84ce4495e4c8f913b31f1
+      internalID: 1164913470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_6
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 80
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbe9acfe6b0c4664589ea039b2b30c33
+      internalID: 1329719456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy_7
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 48
+        width: 32
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39c724fdbc75d494797d5a7d3d6c17ce
+      internalID: 1147464844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -2067,12 +2151,14 @@ TextureImporter:
       Pillar_4: 1070889106
       Wall_3: 503775177
       Crates_1: 766656667
+      Enemy_6: 1329719456
       Healing_Fountain_2: -1407984712
       Sewage_Wall_0: -1120337681
       Green_fountain_Wall_0: -554062973
       Wall_1: -1865063454
       Crates_2: -1127760412
       Torch_2: -402975131
+      Enemy_7: 1147464844
       Stairs_2: -871306638
       Weapon_0: 1184032358
       Torch_5: -973762647
@@ -2084,6 +2170,7 @@ TextureImporter:
       Wall_9: 1204687068
       Floor_7: -1725304043
       Yellow_Wall_flag: -656535285
+      Enemy_4: 682656888
       Torch_8: -1341844944
       Weapon_4: 1665424731
       Stairs_1: 1832938319
@@ -2098,6 +2185,7 @@ TextureImporter:
       Healing_Fountain_2_Top: -29712654
       Floor_5: -1505019082
       Enemy_1: 1104503617
+      Enemy_5: 1164913470
       Sewage_Floor: 140544930
       Floor_8: -132494590
       Enemy_0: 1012526638

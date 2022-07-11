@@ -9,7 +9,8 @@ public class Enemy : Mover
 
     // Logic
     public float triggerLength = 1.0f;
-    public float chaseLength = 5.0f;
+    public float defaultChaseLength = 5.0f;
+    private float currentChaseLength = 5.0f;
 
     private bool chasing;
     private bool collidingWithPlayer;
@@ -26,16 +27,28 @@ public class Enemy : Mover
     {
         base.Awake();
         startingPosition = transform.position;
+        currentChaseLength = defaultChaseLength;
         // Get the hitbox(is the first child of the enemy object)
         hitBox = transform.GetChild(0).GetComponent<BoxCollider2D>();
     }
+
+
+
+    public override void ReceiveDamage(Damage dmg)
+    {
+        base.ReceiveDamage(dmg);
+
+        ChasePlayer(dmg.pushForce);
+        
+    }
+
 
 
     private void FixedUpdate()
     {
         // Check if player in range
         Transform playerTransform = GameManager.instance.player.transform;
-        if (Vector3.Distance(playerTransform.position, startingPosition) < chaseLength)
+        if (Vector3.Distance(playerTransform.position, startingPosition) < currentChaseLength)
         {
             if (Vector3.Distance(playerTransform.position, startingPosition) < triggerLength)
                 chasing = true;
@@ -55,7 +68,7 @@ public class Enemy : Mover
         else
         {
             UpdateMotor(startingPosition - transform.position);
-            chasing = false;
+            StopChacingPlayer();
         }
 
 
@@ -74,6 +87,30 @@ public class Enemy : Mover
             // Clean array
             hits[i] = null;
         }
+    }
+
+
+    /*
+     *  Sets the maximum chase distance to the current distance to the player and starts chacing them
+     */
+    private void ChasePlayer(float knockBackPushForce)
+    {
+        Transform playerTransform = GameManager.instance.player.transform;
+        currentChaseLength = Vector3.Distance(playerTransform.position, startingPosition) * knockBackPushForce; // Additional length needed due to knockback
+        if (currentChaseLength < defaultChaseLength)
+            currentChaseLength = defaultChaseLength;
+
+        chasing = true;
+    }
+
+
+    /*
+     *  Stops chasing the player and resets the maximum chacing distance to the default value
+     */
+    private void StopChacingPlayer()
+    {
+        chasing = false;
+        currentChaseLength = defaultChaseLength;
     }
 
 

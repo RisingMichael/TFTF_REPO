@@ -13,11 +13,15 @@ public abstract class Mover : Fighter
 
 
     // Start is called before the first frame update
-    protected virtual void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         boxCollider = GetComponent<BoxCollider2D>();
     }
 
+
+
+   
 
     protected virtual void UpdateMotor(Vector3 input)
     {

@@ -128,9 +128,10 @@ MonoBehaviour:
   hitpoints: 20
   maxHitpoints: 20
   pushRecoverySpeed: 0.3
+  immunities: 
   xpValue: 1
-  triggerLength: 0.6
-  chaseLength: 1
+  triggerLength: 1
+  defaultChaseLength: 5
   filter:
     useTriggers: 0
     useLayerMask: 0

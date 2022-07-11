@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: -1439239553
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1104503617, guid: a3aba5edb03beba4bba2f6ac3066383b, type: 3}
+  m_Sprite: {fileID: 1329719456, guid: a3aba5edb03beba4bba2f6ac3066383b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,18 +100,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0008241236, y: -0.014171064}
+  m_Offset: {x: 0.0049367547, y: 0.00061509013}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.21}
+    oldSize: {x: 0.13, y: 0.15}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.123084605, y: 0.18079895}
+  m_Size: {x: 0.12231648, y: 0.15122664}
   m_EdgeRadius: 0
 --- !u!114 &877393833913757880
 MonoBehaviour:
@@ -125,12 +125,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb9628bb42531c479a2283232b84517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitpoints: 100
-  maxHitpoints: 100
+  hitpoints: 80
+  maxHitpoints: 80
   pushRecoverySpeed: 0.5
+  immunities: 
   xpValue: 1
-  triggerLength: 0.6
-  chaseLength: 3
+  triggerLength: 1.5
+  defaultChaseLength: 10
   filter:
     useTriggers: 0
     useLayerMask: 0
@@ -191,7 +192,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0008241236, y: -0.014171064}
+  m_Offset: {x: 0.0045526624, y: 0.0059918687}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -202,7 +203,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.123084605, y: 0.18079895}
+  m_Size: {x: 0.120012164, y: 0.14047308}
   m_EdgeRadius: 0
 --- !u!114 &877393834691282542
 MonoBehaviour:

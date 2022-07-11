@@ -121,7 +121,8 @@ public class Weapon : Collidable
             {
                 damageAmount = damagePoint,
                 origin = transform.position,
-                pushForce = pushForce
+                pushForce = pushForce,
+                damageType = DamageType.Melee
             };
 
             coll.SendMessage("ReceiveDamage", dmg);

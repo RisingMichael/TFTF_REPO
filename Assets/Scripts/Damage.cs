@@ -7,7 +7,10 @@ public struct Damage
     public Vector3 origin;
     public int damageAmount;
     public float pushForce;
+    public DamageType damageType;
+}
 
-
-
+public enum DamageType
+{
+    Melee, Ranged
 }

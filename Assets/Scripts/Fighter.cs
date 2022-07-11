@@ -13,17 +13,41 @@ public class Fighter : MonoBehaviour
     // Immunity
     protected float immuneTime = 1.0f;
     protected float lastImmune;
+    [SerializeField]
+    protected List<DamageType> immunities;
+
+    protected SpriteRenderer spriteRenderer;
+    protected bool flickering = false;
+    protected float lastFlicker;
+    protected float flickerTime = 0.08f;
 
 
     // Push
     protected Vector3 pushDirection;
 
 
+
+
+
+
+
+
+    protected virtual void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+
+
+
+
     // All fighters receive Damage / Die
-    //TODO: make the creatures flickering red when hit to indicate immuneTime
     public virtual void ReceiveDamage(Damage dmg)
     {
-        if(Time.time - lastImmune > immuneTime)
+        if (immunities.Contains(dmg.damageType))
+            dmg.damageAmount = 0;
+            
+        if (Time.time - lastImmune > immuneTime)
         {
             lastImmune = Time.time;
             hitpoints -= dmg.damageAmount;
@@ -32,6 +56,7 @@ public class Fighter : MonoBehaviour
 
             GameManager.instance.ShowText(dmg.damageAmount.ToString(), 40, Color.red, transform.position, Vector3.zero, 0.5f);
 
+            flickering = true;
 
             // Die if hitpoints depleted
             if(hitpoints <= 0)
@@ -43,6 +68,17 @@ public class Fighter : MonoBehaviour
     }
 
 
+    protected virtual void Update()
+    {
+        if(flickering)
+        {
+            if (Time.time - lastImmune > immuneTime)
+                StopFlickering();
+            else
+                Flicker();
+        }
+    }
+
     public virtual void Heal(int amount)
     {
         hitpoints += amount;
@@ -50,6 +86,26 @@ public class Fighter : MonoBehaviour
         if (hitpoints > maxHitpoints) hitpoints = maxHitpoints;
     }
 
+
+
+    protected void Flicker()
+    {
+        if (Time.time - lastFlicker > flickerTime)
+        {
+            lastFlicker = Time.time;
+            if (spriteRenderer.color == Color.grey)
+                spriteRenderer.color = Color.white;
+            else
+                spriteRenderer.color = Color.grey;
+        }
+    }
+
+
+    protected void StopFlickering()
+    {
+        flickering = false;
+        spriteRenderer.color = Color.white;
+    }
 
 
     protected virtual void Death() { }
