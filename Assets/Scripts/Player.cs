@@ -27,6 +27,10 @@ public class Player : Mover
         UpdateMotor(new Vector3(x, y, 0));
     }
 
+    protected override void Awake()
+    {
+        base.Awake();
+    }
 
     public override void ReceiveDamage(Damage dmg)
     {

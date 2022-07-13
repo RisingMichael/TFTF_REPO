@@ -22,6 +22,8 @@ public class Fighter : MonoBehaviour
     protected float flickerTime = 0.08f;
 
 
+    protected AudioSource audioPlayer;
+
     // Push
     protected Vector3 pushDirection;
 
@@ -35,6 +37,9 @@ public class Fighter : MonoBehaviour
     protected virtual void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        audioPlayer = gameObject.AddComponent<AudioSource>();
+        audioPlayer.volume = 0.7f;
     }
 
 
@@ -57,6 +62,9 @@ public class Fighter : MonoBehaviour
             GameManager.instance.ShowText(dmg.damageAmount.ToString(), 40, Color.red, transform.position, Vector3.zero, 0.5f);
 
             flickering = true;
+
+
+            PlayHitSound();
 
             // Die if hitpoints depleted
             if(hitpoints <= 0)
@@ -107,6 +115,24 @@ public class Fighter : MonoBehaviour
         spriteRenderer.color = Color.white;
     }
 
+
+    private void PlayHitSound()
+    {
+        audioPlayer.Stop();
+        audioPlayer.PlayOneShot(Resources.Load<AudioClip>("Sounds\\Hit_Effect"));
+    }
+
+    public void PlaySwingSound()
+    {
+        audioPlayer.Stop();
+        audioPlayer.PlayOneShot(Resources.Load<AudioClip>("Sounds\\Sword_swing"));
+    }
+
+    public void PlayShotSound()
+    {
+        audioPlayer.Stop();
+        audioPlayer.PlayOneShot(Resources.Load<AudioClip>("Sounds\\Arrow_Shot"));
+    }
 
     protected virtual void Death() { }
 }

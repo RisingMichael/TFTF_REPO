@@ -28,10 +28,12 @@ public class GameManager : MonoBehaviour
     public List<int> weaponPrices;
     public List<int> xpTable;
 
-
     // References
     public Player player;
     public FloatingTextManager floatingTextManager;
+    public GameObject levelMusicGameObject;
+
+    private AudioSource levelMusicPlayer;
 
 
     public TextInputManager textInputManager { get => GetComponent<TextInputManager>(); }
@@ -46,6 +48,8 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        levelMusicPlayer = levelMusicGameObject.GetComponent<AudioSource>();
+
         //if(GameManager.instance != null)
         //{
         //    Destroy(gameObject);
@@ -120,6 +124,24 @@ public class GameManager : MonoBehaviour
         s += "0";
 
         PlayerPrefs.SetString("SaveState", s);
+    }
+
+
+
+    public void PlayMainTrack()
+    {
+        levelMusicPlayer.Stop();
+        levelMusicPlayer.clip = Resources.Load<AudioClip>("Sounds\\TFTF_MainTheme");
+        levelMusicPlayer.loop = true;
+        levelMusicPlayer.Play();
+    }
+
+    public void PlayTypingTrack()
+    {
+        levelMusicPlayer.Stop();
+        levelMusicPlayer.clip = Resources.Load<AudioClip>("Sounds\\TFTF_TypeForYourLife");
+        levelMusicPlayer.loop = true;
+        levelMusicPlayer.Play();
     }
 
 

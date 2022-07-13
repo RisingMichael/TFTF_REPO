@@ -66,6 +66,9 @@ public class TextInputManager : MonoBehaviour
         textInputActivated = true;
         OnChangeActiveState?.Invoke(true); // update Ui
         inputFieldObject.GetComponent<TMP_InputField>().ActivateInputField(); //so that the player can immediately type in something
+
+        // Play typing music
+        GameManager.instance.PlayTypingTrack();
     }
 
     public void DeactivateTextInput()
@@ -82,6 +85,9 @@ public class TextInputManager : MonoBehaviour
         GameManager.instance.weaponReader.ReadWeaponData(input, percentageOfTimeLeft);
         Time.timeScale = 1.0f;
         StartCoroutine(CoolDown());
+
+        // Play main theme
+        GameManager.instance.PlayMainTrack();
     }
 
     public float percentageOfTimeLeft { get => Mathf.Min(timeLimitInSec, secsLeft) / timeLimitInSec; }

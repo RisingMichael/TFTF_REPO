@@ -133,6 +133,7 @@ public class Weapon : Collidable
     private void Swing()
     {
         anim.SetTrigger("Swing");
+        GameManager.instance.player.PlaySwingSound();
         StartCoroutine(DecreaseUses());
     }
 
@@ -150,7 +151,7 @@ public class Weapon : Collidable
 
     private void Shoot()
     {
-        // TODO: Trigger shooting animation and launch projectile
+        // Trigger shooting animation and launch projectile
 
         GameObject projObj = Instantiate(Resources.Load<GameObject>("Prefabs\\Projectile"));
         projObj.transform.position = new Vector3(transform.position.x, transform.position.y - 0.05f);
@@ -160,6 +161,8 @@ public class Weapon : Collidable
 
         Projectile proj = projObj.GetComponent<Projectile>();
         proj.Initialize(damagePoint, pushForce, new Vector3(dir2.x, dir2.y), projectileSprite);
+
+        GameManager.instance.player.PlayShotSound();
 
         usesLeft--;
         Debug.Log("Uses Left: " + usesLeft);
